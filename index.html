@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Opening App...</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+    function openApp() {
+      const now = new Date().getTime();
+
+      const deepLink = "acu:///pushregistration/?identifier=pushauth://push/ForgeRock:Lucas1@its.com?a=aHR0cHM6Ly9vcGVuYW0tY2dpc2N1ZXh0LW5hbmUxLWRldi5pZC5mb3JnZXJvY2suaW86NDQzL2FtL2pzb24vYWxwaGEvcHVzaC9zbnMvbWVzc2FnZT9fYWN0aW9uPWF1dGhlbnRpY2F0ZQ&r=aHR0cHM6Ly9vcGVuYW0tY2dpc2N1ZXh0LW5hbmUxLWRldi5pZC5mb3JnZXJvY2suaW86NDQzL2FtL2pzb24vYWxwaGEvcHVzaC9zbnMvbWVzc2FnZT9fYWN0aW9uPXJlZ2lzdGVy&b=032b75&s=9i08hJvrMVxOUkLDnt9khiAKS2ZwSSyIrj-L9HzGZBE&c=ruvqYZADwWSD2YjXFJrO2D92RQvfD5UIcOK-F2UXEmg&l=YW1sYmNvb2tpZT0wMQ&m=REGISTER:89c61005-2750-4528-b4ed-03a6f630876b1742575497576&issuer=Rm9yZ2VSb2Nr";
+
+      window.location = deepLink;
+
+      setTimeout(function () {
+        const elapsed = new Date().getTime() - now;
+        if (elapsed < 2000) {
+          const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+          if (/android/i.test(userAgent)) {
+            window.location = "https://play.google.com/store/apps/details?id=com.celero.access";
+          } else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+            window.location = "https://apps.apple.com/ca/app/access-cu/id765990951";
+          }
+        }
+      }, 1500);
+    }
+  </script>
+</head>
+<body onload="openApp()">
+  <p>Redirecting to the app...</p>
+</body>
+</html>
